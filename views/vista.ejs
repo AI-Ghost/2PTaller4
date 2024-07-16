@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Página Web</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+        .main-content {
+            flex: 1;
+            display: flex;
+        }
+        .nav-menu {
+            min-width: 200px;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+
+    <%- include("partials/header") -%>
+
+    <div class="main-content container-fluid">
+        <%-  include("partials/menu")-%>
+        
+        <div class="content p-3">
+            <div class="container-fluid p-4">
+                <h1 class="pb-4"><%= title %></h1>
+                
+                <% arrFotos.forEach((foto) => { %>
+                
+                <div class="container">
+                    <div class="row">
+                        <div class="col">                    
+                            <ul class="list-group">
+                                <li class="list-group-item">ID</li>
+                                <li class="list-group-item"><%= foto.id %></li>
+                            </ul>
+                        </div>
+                        <div class="col">                    
+                            <ul class="list-group">
+                                <li class="list-group-item">Titulo</li>
+                                <li class="list-group-item"><%= foto.titulo %></li>
+                            </ul>
+                        </div>
+                        <div class="col">                    
+                            <ul class="list-group">
+                                <li class="list-group-item">Descripcion</li>
+                                <li class="list-group-item"><%= foto.descripcion %></li>
+                            </ul>
+                        </div>
+                        <div class="col">                    
+                            <ul class="list-group">
+                                <li class="list-group-item">Ruta</li>
+                                <li class="list-group-item"><%= foto.ruta %></li>
+                            </ul>
+                        </div>
+                        <div class="col">                    
+                            <ul class="list-group">
+                                <li class="list-group-item">Fecha</li>
+                                <li class="list-group-item"><%=foto.createdAt.toLocaleDateString('en-US')%></li>
+                            </ul>
+                        </div>
+                        <div class="col">                    
+                            <ul class="list-group">
+                                <li class="list-group-item">Relacion Etiqueta</li>
+                                <li class="list-group-item"><%= foto.etiqueta %></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <% }); %>
+
+              </div>
+        </div>
+    </div>
+    <%-  include("partials/footer") -%>
+</body>
+</html>
